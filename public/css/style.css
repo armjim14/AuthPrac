@@ -1,0 +1,44 @@
+body {
+  background-image: url("/background");
+}
+
+.title {
+  color: white;
+  font-size: 1.5rem;
+}
+
+.bigBox {
+  width: 100%;
+  margin-top: 100px;
+}
+
+.smallBox {
+  margin: auto;
+  background: white;
+  width: 600px;
+}
+
+.forInput {
+  display: flex;
+  width: 90%;
+  margin-left: 5%;
+  margin-bottom: 18px;
+}
+
+.inputHeader {
+  text-align: center;
+  padding-top: 7px;
+  padding-bottom: 15px;
+}
+
+.forButton {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+}
+
+#login {
+  margin-bottom: 20px;
+}
+
+/*# sourceMappingURL=style.css.map */
