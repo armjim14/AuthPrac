@@ -1,5 +1,7 @@
 // Variables
 $white: white
+$blueP: #6d6dff
+$whiteish: #ececec
     
 body
     background-image: url("/background")
@@ -17,8 +19,9 @@ body
 // Login/Register Box part two
 .smallBox
     margin: auto
-    background: $white
+    background: $whiteish
     width: 600px
+    border-radius: 3%
 
 // Centering Inputs
 .forInput
@@ -26,6 +29,7 @@ body
     width: 90%
     margin-left: 5%
     margin-bottom: 18px
+    padding-left: 8px
 
 .inputHeader
     text-align: center
@@ -37,5 +41,9 @@ body
     justify-content: center
     display: flex
 
-#login
+#login, #register
     margin-bottom: 20px
+
+@media screen and (max-width: 610px)
+    .smallBox
+        width: 100%

@@ -32,6 +32,16 @@ function htmlHandle(app, path) {
     })
 
     // ------------
+    // JavaScript
+    // ------------
+    app.get("/forNav",(req, res) => {
+        res.sendFile(path.join(__dirname, "../public/javascript/forNav.js"))
+    })
+    app.get("/jQuery",(req, res) => {
+        res.sendFile(path.join(__dirname, "../public/javascript/jQuery.js"))
+    })
+
+    // ------------
     // Images
     // ------------
     app.get("/background", (req, res) => {

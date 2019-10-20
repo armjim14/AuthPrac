@@ -14,8 +14,9 @@ body {
 
 .smallBox {
   margin: auto;
-  background: white;
+  background: #ececec;
   width: 600px;
+  border-radius: 3%;
 }
 
 .forInput {
@@ -23,6 +24,7 @@ body {
   width: 90%;
   margin-left: 5%;
   margin-bottom: 18px;
+  padding-left: 8px;
 }
 
 .inputHeader {
@@ -37,8 +39,14 @@ body {
   display: flex;
 }
 
-#login {
+#login, #register {
   margin-bottom: 20px;
+}
+
+@media screen and (max-width: 610px) {
+  .smallBox {
+    width: 100%;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
