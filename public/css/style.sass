@@ -2,6 +2,8 @@
 $white: white
 $blueP: #6d6dff
 $whiteish: #ececec
+$buttonColor: darkcyan
+$buttonHover: #006969
     
 body
     background-image: url("/background")
@@ -9,7 +11,10 @@ body
 // for navbar title
 .title
     color: $white
-    font-size: 1.5rem
+    font-size: 2rem
+
+.nav-link
+    font-size: 1.25rem
 
 // Login/Register Box part one
 .bigBox
@@ -30,20 +35,28 @@ body
     margin-left: 5%
     margin-bottom: 18px
     padding-left: 8px
+    font-size: 1.25rem
 
 .inputHeader
     text-align: center
+    font-size: 3.25rem
     padding-top: 7px
     padding-bottom: 15px
 
 .forButton
+    font-size: 1.25rem
     width: 100%
     justify-content: center
     display: flex
 
 #login, #register
     margin-bottom: 20px
+    background: $buttonColor
+    width: 90%
+
+#login:hover, #register:hover
+    background: $buttonHover
 
 @media screen and (max-width: 610px)
     .smallBox
-        width: 100%
+        width: 95%
