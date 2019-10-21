@@ -1,9 +1,11 @@
 // Variables
 $white: white
 $blueP: #6d6dff
-$whiteish: #ececec
+$whiteish: #eaeaea
 $buttonColor: darkcyan
 $buttonHover: #006969
+$solidGray: #343a40
+$red: #ff3333
     
 body
     background-image: url("/background")
@@ -24,7 +26,7 @@ body
 // Login/Register Box part two
 .smallBox
     margin: auto
-    background: $whiteish
+    background: $solidGray
     width: 600px
     border-radius: 3%
 
@@ -36,12 +38,23 @@ body
     margin-bottom: 18px
     padding-left: 8px
     font-size: 1.25rem
+    border: none
+    color: $white
+    border-bottom: $white 1px solid
+    background-color: transparent
+
+.forInput:focus
+    outline-width: 0
+
+::placeholder
+    color: #969696
 
 .inputHeader
     text-align: center
     font-size: 3.25rem
+    color: $white
     padding-top: 7px
-    padding-bottom: 15px
+    padding-bottom: 12px
 
 .forButton
     font-size: 1.25rem
@@ -50,12 +63,31 @@ body
     display: flex
 
 #login, #register
-    margin-bottom: 20px
+    margin-bottom: 15px
     background: $buttonColor
     width: 90%
+    font-size: 1.25rem
+    letter-spacing: 1.25px
 
 #login:hover, #register:hover
     background: $buttonHover
+
+#logmsg, #regmsg
+    color: $red
+    text-align: center
+    font-size: 1.25rem
+    font-weight: 400
+    display: none
+
+.switch
+    color: $whiteish
+    text-align: center
+    font-size: 1.15rem
+    padding-bottom: 15px
+    cursor: pointer
+
+.switch:hover
+    color: $blueP
 
 @media screen and (max-width: 610px)
     .smallBox

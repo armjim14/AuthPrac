@@ -44,17 +44,22 @@
     <div class="bigBox">
         <div class="smallBox">
             <h1 class="inputHeader">Register</h1>
-            <input type="text" class="forInput" id="name" placeholder="Name">
-            <input type="email" class="forInput" id="email" placeholder="Email">
-            <input type="text" class="forInput" id="uname" placeholder="Username">
-            <input type="password" class="forInput" id="pword" placeholder="Password">
-            <input type="password" class="forInput" id="pword2" placeholder="Password Again">
-            <div class="forButton">
-                <button class="btn btn-secondary" id="register">Register</button>
-            </div>
+            <p id="regmsg"></p>
+            <form id="create">
+                <input type="text" class="forInput" id="name" placeholder="Name" required>
+                <input type="email" class="forInput" id="email" placeholder="Email" required>
+                <input type="text" class="forInput" id="uname" placeholder="Username" required>
+                <input type="password" class="forInput" id="pword" placeholder="Password" required>
+                <input type="password" class="forInput" id="pword2" placeholder="Password Again" required>
+                <div class="forButton">
+                    <input type="submit" value="Register" class="btn btn-secondary py-1" id="register">
+                </div>
+            </form>
+            <p class="switch">have an account? Click here to login</p>
         </div>
     </div>
 <script src="/jQuery"></script>
 <script src="/forNav"></script>
+<script src="/auth"></script>
 </body>
 </html>

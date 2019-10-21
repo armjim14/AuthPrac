@@ -18,7 +18,7 @@ body {
 
 .smallBox {
   margin: auto;
-  background: #ececec;
+  background: #343a40;
   width: 600px;
   border-radius: 3%;
 }
@@ -30,13 +30,26 @@ body {
   margin-bottom: 18px;
   padding-left: 8px;
   font-size: 1.25rem;
+  border: none;
+  color: white;
+  border-bottom: white 1px solid;
+  background-color: transparent;
+}
+
+.forInput:focus {
+  outline-width: 0;
+}
+
+::placeholder {
+  color: #969696;
 }
 
 .inputHeader {
   text-align: center;
   font-size: 3.25rem;
+  color: white;
   padding-top: 7px;
-  padding-bottom: 15px;
+  padding-bottom: 12px;
 }
 
 .forButton {
@@ -47,13 +60,35 @@ body {
 }
 
 #login, #register {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   background: darkcyan;
   width: 90%;
+  font-size: 1.25rem;
+  letter-spacing: 1.25px;
 }
 
 #login:hover, #register:hover {
   background: #006969;
+}
+
+#logmsg, #regmsg {
+  color: #ff3333;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 400;
+  display: none;
+}
+
+.switch {
+  color: #eaeaea;
+  text-align: center;
+  font-size: 1.15rem;
+  padding-bottom: 15px;
+  cursor: pointer;
+}
+
+.switch:hover {
+  color: #6d6dff;
 }
 
 @media screen and (max-width: 610px) {

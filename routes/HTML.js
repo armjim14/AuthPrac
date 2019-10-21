@@ -40,6 +40,9 @@ function htmlHandle(app, path) {
     app.get("/jQuery",(req, res) => {
         res.sendFile(path.join(__dirname, "../public/javascript/jQuery.js"))
     })
+    app.get("/auth",(req, res) => {
+        res.sendFile(path.join(__dirname, "../public/javascript/auth.js"))
+    })
 
     // ------------
     // Images
