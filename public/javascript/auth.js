@@ -41,12 +41,33 @@ registerButton.addEventListener("submit", e => {
 
         $.post("/create/account", ob)
             .then( res => {
-                console.log(res)
-                name.value = "";
-                email.value = "";
-                uname.value = "";
-                pword.value = "";
-                pword2.value = "";
+                if (res.errors){
+
+                    console.log(res.errors)
+
+                    if (res.errors[0].type === "Validation error"){
+                        if (res.errors[0].path === "username"){
+                            regmsg.innerText = "Username has to be between 2 to 15 characters";
+                            regmsg.style.display = "block";
+                        }
+                    } else if (res.errors[0].type === "unique violation") {
+                        if (res.errors[0].path === "email"){
+                            regmsg.innerText = "Email entered already exist";
+                            regmsg.style.display = "block";
+                        } else {
+                            regmsg.innerText = "Username is taken";
+                            regmsg.style.display = "block";
+                        }
+                    }
+
+                } else {
+                    console.log(res.message)
+                    name.value = "";
+                    email.value = "";
+                    uname.value = "";
+                    pword.value = "";
+                    pword2.value = "";
+                }
             })
         
     }

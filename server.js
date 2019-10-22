@@ -6,7 +6,7 @@ var path = require("path");
 const app = express();
 
 // access to the mysql database
-const db = null;
+const db = require("./models");
 
 // parsing url response
 app.use(express.urlencoded({ extended: false }));
@@ -25,13 +25,24 @@ app.use(
 // for flashing messages
 app.use(flash());
 
-require("./routes/sessionHandler")(app);
+require("./routes/sessionHandler")(app, db);
 require("./routes/HTML")(app, path);
 
 // setting up the port the server will be in
 let PORT = process.env.PORT || 3000;
 
 // listener to trigger server
-app.listen(PORT, () => {
-    console.log('Listening...')
-})
+var syncOptions = { force: false };
+
+// If running a test, set syncOptions.force to true
+// clearing the `testdb`
+if (process.env.NODE_ENV === "test") {
+  syncOptions.force = true;
+}
+
+// Starting the server, syncing our models ------------------------------------/
+db.sequelize.sync(syncOptions).then(() => {
+  app.listen(PORT, () => {
+    console.log("Listening...");
+  });
+});
