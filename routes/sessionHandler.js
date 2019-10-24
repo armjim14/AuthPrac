@@ -2,10 +2,32 @@ const bcrypt = require("bcryptjs");
 
 function session(app, db) {
 
-    app.get("/find/user", (req, res) => {
-        // login logic
-        // db.users should be working
-        res.json({msg: "temp"})
+    // Logging in
+    app.post("/find/user", async (req, res) => {
+
+        const { username, password } = req.body;
+        let user = await db.users.findOne({ where: {username} })
+
+        if (user){
+
+            let match = await bcrypt.compare(password, user.password);
+
+            if (match){
+                req.session.user = {
+                    name: user.name,
+                    email: user.email,
+                    username
+                };
+                console.log(req.session.user)
+                return res.json({message: ""}).redirect(200, "/");
+            } else {
+                res.json({message: "Invalid Credentials"})
+            }
+
+        } else {
+            res.json({message: "Invalid Credentials"})
+        }
+
     })
     
     // creating an account
@@ -26,6 +48,7 @@ function session(app, db) {
             res.send(e)
         }
     })
+
 }
 
 module.exports = session;

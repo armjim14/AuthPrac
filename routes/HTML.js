@@ -3,15 +3,18 @@ function htmlHandle(app, path) {
     // HTMl Pages
     // ------------
     app.get("/", (req, res) => {
-        // if (!req.session.user){
-        //     return res.redirect("/login")
-        // }
         res.sendFile(path.join(__dirname, "../public/index.html"));
     })
     app.get("/login", (req, res) => {
+        if (req.session.user){
+            return res.redirect("/")
+        }
         res.sendFile(path.join(__dirname, "../public/login.html"));
     })
     app.get("/register", (req, res) => {
+        if (req.session.user){
+            return res.redirect("/")
+        }
         res.sendFile(path.join(__dirname, "../public/register.html"));
     })
 
@@ -42,6 +45,9 @@ function htmlHandle(app, path) {
     })
     app.get("/auth",(req, res) => {
         res.sendFile(path.join(__dirname, "../public/javascript/auth.js"))
+    })
+    app.get("/index",(req, res) => {
+        res.sendFile(path.join(__dirname, "../public/javascript/index.js"))
     })
 
     // ------------

@@ -27,6 +27,7 @@ app.use(flash());
 
 require("./routes/sessionHandler")(app, db);
 require("./routes/HTML")(app, path);
+require("./routes/APIs")(app, db);
 
 // setting up the port the server will be in
 let PORT = process.env.PORT || 3000;
