@@ -4,6 +4,7 @@ function session(app, db) {
 
     app.get("/find/user", (req, res) => {
         // login logic
+        // db.users should be working
         res.json({msg: "temp"})
     })
     
