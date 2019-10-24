@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 function session(app, db) {
 
     app.get("/find/user", (req, res) => {
-        // log in info
+        // login logic
         res.json({msg: "temp"})
     })
     
