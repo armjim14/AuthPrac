@@ -63,12 +63,16 @@ if (registerButton) {
                         }
 
                     } else {
-                        console.log(res.message)
+
+                        console.log(res.created)
+                        window.location.href = "/login"
+
                         name.value = "";
                         email.value = "";
                         uname.value = "";
                         pword.value = "";
                         pword2.value = "";
+                        
                     }
                 })
         }
@@ -116,4 +120,14 @@ if (login){
 
     })
 
+}
+
+// forgot Password logic
+
+let emailButton = document.getElementById("forgotEmail");
+
+if (emailButton) {
+    emailButton.addEventListener("click", () => {
+        console.log("Forgot email logic")
+    })
 }

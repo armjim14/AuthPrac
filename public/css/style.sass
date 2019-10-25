@@ -5,7 +5,7 @@ $whiteish: #eaeaea
 $buttonColor: darkcyan
 $buttonHover: #006969
 $solidGray: #343a40
-$red: #ff3333
+$red: #f94949
     
 body
     background-image: url("/background")
@@ -86,8 +86,15 @@ body
     padding-bottom: 15px
     cursor: pointer
 
-.switch:hover
-    color: $blueP
+.switch:hover, #forgotEmail:hover
+    text-decoration: underline
+
+#forgotEmail
+    text-align: center
+    cursor: pointer
+    color: $red
+    margin-bottom: 5px
+    font-size: 1.15rem
 
 @media screen and (max-width: 610px)
     .smallBox
