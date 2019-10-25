@@ -42,7 +42,7 @@ function session(app, db) {
                 username: uname,
                 password
             })
-            res.status(200).send({Message: "Account created"})
+            res.status(200).send({ created: true });
         } catch(e) {
             console.log(e)
             res.send(e)
