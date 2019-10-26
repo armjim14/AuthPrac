@@ -72,7 +72,7 @@ if (registerButton) {
                         uname.value = "";
                         pword.value = "";
                         pword2.value = "";
-                        
+
                     }
                 })
         }
@@ -85,8 +85,8 @@ if (registerButton) {
 
 let login = document.getElementById("sendLogin");
 
-if (login){
-    
+if (login) {
+
     login.addEventListener("submit", e => {
         e.preventDefault();
 
@@ -94,21 +94,21 @@ if (login){
         let password = document.getElementById("password");
         let err = document.getElementById("logmsg");
 
-        if (!username.value || !password.value){
+        if (!username.value || !password.value) {
             err.innerText = "Please fill out both fields";
             err.style.display = "block";
         } else {
             err.innerText = "";
             err.style.display = "none";
-            
+
             let ob = {
                 username: username.value,
                 password: password.value
             }
 
             $.post("/find/user", ob)
-                .then( res => {
-                    if (res.message){
+                .then(res => {
+                    if (res.message) {
                         err.innerText = res.message;
                         err.style.display = "block";
                     } else {
