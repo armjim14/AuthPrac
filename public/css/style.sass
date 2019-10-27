@@ -43,12 +43,15 @@ body
     border-bottom: $white 1px solid
     background-color: transparent
 
+// Getting ride of the blue outline for input fields
 .forInput:focus, select:focus
     outline-width: 0
 
+// So the placeholder and value of an input tag are different
 ::placeholder
     color: #969696
 
+// The title of the page
 .inputHeader
     text-align: center
     font-size: 3.25rem
@@ -56,6 +59,7 @@ body
     padding-top: 7px
     padding-bottom: 12px
 
+// centering Items mainly used for buttons
 .forButton
     font-size: 1.25rem
     width: 100%
@@ -68,10 +72,10 @@ body
     width: 90%
     font-size: 1.25rem
     letter-spacing: 1.25px
-
 #login:hover, #register:hover
     background: $buttonHover
 
+// showing messages
 #logmsg, #regmsg, #formsg
     color: $red
     text-align: center
@@ -79,13 +83,13 @@ body
     font-weight: 400
     display: none
 
+// Navigating from login to register
 .switch
     color: $whiteish
     text-align: center
     font-size: 1.15rem
     padding-bottom: 15px
     cursor: pointer
-
 .switch:hover, #forgotPassword:hover
     text-decoration: underline
 

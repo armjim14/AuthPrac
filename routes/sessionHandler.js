@@ -33,7 +33,7 @@ function session(app, db) {
     
     // creating an account
     app.post("/create/account", async (req, res) => {
-        const { name, email, uname, pword, securityQ, secuirtyA } = req.body;
+        const { name, email, uname, pword, securityQ, securityA } = req.body;
         try {
             let password = await bcrypt.hash(pword, 10)
             console.log(password)
@@ -42,8 +42,8 @@ function session(app, db) {
                 email,
                 username: uname,
                 password,
-                secuirtyQ,
-                secuirtyA
+                securityQ,
+                securityA
             })
             res.status(200).send({ created: true });
         } catch(e) {
