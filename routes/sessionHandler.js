@@ -1,4 +1,5 @@
 const bcrypt = require("bcryptjs");
+const nodemailer = require("nodemailer");
 
 function session(app, db) {
 
@@ -32,7 +33,7 @@ function session(app, db) {
     
     // creating an account
     app.post("/create/account", async (req, res) => {
-        const { name, email, uname, pword } = req.body;
+        const { name, email, uname, pword, securityQ, secuirtyA } = req.body;
         try {
             let password = await bcrypt.hash(pword, 10)
             console.log(password)
@@ -40,7 +41,9 @@ function session(app, db) {
                 name,
                 email,
                 username: uname,
-                password
+                password,
+                secuirtyQ,
+                secuirtyA
             })
             res.status(200).send({ created: true });
         } catch(e) {
@@ -49,6 +52,62 @@ function session(app, db) {
         }
     })
 
+    app.post("/forgot/password", async (req, res) => {
+
+        let { email } = req.body;
+
+        try {
+
+            let account = await db.users.findOne({ where: { email } });
+    
+            if (account){
+                let { name, username } = account;
+                // await sendEmail(name, email)
+                let info = { name, username, email }
+                res.json({ info })
+            } else {
+                res.json({error: true})
+            }
+
+        } catch(e) {
+
+            console.log(e)
+            res.json({error: true})
+
+        }
+
+    })
+
 }
 
 module.exports = session;
+
+function sendEmail(name, email){
+    let transporter = nodemailer.createTransport({
+        service: "gmail",
+        secure: false,
+        port: 25,
+        auth: {
+          user: process.env.email,
+          pass: process.env.password
+        },
+        tls: {
+          rejectUnauthorized: false
+        }
+      });
+    
+      let HelperOptions = {
+        from: `${process.env.email}`,
+        to: `${email}`,
+        subject: `Password changed`,
+        text: `Hello ${name}, There has been a change to your account with Videosim`
+      };
+    
+      transporter.sendMail(HelperOptions, (error, info) => {
+        if (error) {
+          return console.error(error);
+        }
+        console.log("The message was sent!");
+        console.log.log(info)
+      });
+}

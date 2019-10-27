@@ -17,6 +17,12 @@ function htmlHandle(app, path) {
         }
         res.sendFile(path.join(__dirname, "../public/register.html"));
     })
+    app.get("/forgot/password", (req, res) => {
+        if (req.session.user){
+            return res.redirect("/")
+        }
+        res.sendFile(path.join(__dirname, "../public/forgotPassword.html"));
+    })
 
     // ------------
     // CSS

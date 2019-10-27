@@ -21,9 +21,12 @@ if (registerButton) {
         let uname = document.getElementById("uname");
         let pword = document.getElementById("pword");
         let pword2 = document.getElementById("pword2");
+        let SQ = document.getElementById("questions");
+        let SA = document.getElementById("SA");
+
         let regmsg = document.getElementById("regmsg");
 
-        if (!name.value || !email.value || !uname.value || !pword.value || !pword2.value) {
+        if (!name.value || !email.value || !uname.value || !pword.value || !pword2.value || !SQ.value || !SA.value ) {
             regmsg.innerText = "Please Fill out all the fields!";
             regmsg.style.display = "block";
         } else if (pword.value !== pword2.value) {
@@ -38,7 +41,9 @@ if (registerButton) {
                 email: email.value,
                 uname: uname.value,
                 pword: pword.value,
-                pword2: pword2.value
+                pword2: pword2.value,
+                securityQ: SQ.value,
+                securityA: SA.value
             }
 
             $.post("/create/account", ob)
@@ -124,10 +129,28 @@ if (login) {
 
 // forgot Password logic
 
-let emailButton = document.getElementById("forgotEmail");
+let sendRequest = document.getElementById("sendRequest");
 
-if (emailButton) {
-    emailButton.addEventListener("click", () => {
-        console.log("Forgot email logic")
+if (sendRequest){
+    sendRequest.addEventListener("submit", e => {
+        e.preventDefault();
+        let email = document.getElementById("emailReset").value;
+        let ob = { email }
+
+        $.post("/forgot/password", ob)
+            .then( res => {
+                console.log(res);
+                if (res.error){
+                    let err = document.getElementById("formsg");
+                    err.innerText = "Unable to find an account with that email";
+                    err.style.display = "block"
+                } else {
+                    nextStep(res.info);
+                }
+            })
     })
+}
+
+function nextStep(info) {
+    console.log(info)
 }
