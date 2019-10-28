@@ -143,6 +143,21 @@ select {
   margin-bottom: 7px;
 }
 
+#sendRequest {
+  display: block;
+}
+
+#form2, #form3 {
+  display: none;
+}
+
+.feedback {
+  color: #6fffff;
+  text-align: center;
+  font-size: 1.15rem;
+  margin-top: 9px;
+}
+
 @media screen and (max-width: 610px) {
   .smallBox {
     width: 95%;

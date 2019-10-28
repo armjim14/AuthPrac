@@ -90,6 +90,8 @@ if (registerButton) {
 
 let login = document.getElementById("sendLogin");
 
+var LogMessage = "";
+
 if (login) {
 
     login.addEventListener("submit", e => {
@@ -139,18 +141,99 @@ if (sendRequest){
 
         $.post("/forgot/password", ob)
             .then( res => {
-                console.log(res);
+                let err = document.getElementById("formsg");
                 if (res.error){
-                    let err = document.getElementById("formsg");
                     err.innerText = "Unable to find an account with that email";
                     err.style.display = "block"
-                } else {
+                } else if (res.info) {
+                    err.innerText = "";
+                    err.style.display = "none"
                     nextStep(res.info);
+                } else {
+                    err.innerText = "An error occurced please try again";
+                    err.style.display = "block"
                 }
             })
     })
 }
 
+var someInfo = null;
+
 function nextStep(info) {
-    console.log(info)
+    someInfo = info
+    document.getElementById("sendRequest").style.display = "none";
+    document.getElementById("form2").style.display = "block";
+    document.getElementsByClassName("feedback")[1].innerText = `${info.securityQ}?`;
+}
+
+let formTwo = document.getElementById("form2");
+
+if (formTwo){
+    formTwo.addEventListener("submit", e => {
+        e.preventDefault();
+
+        let answer = document.getElementById("answer");
+        let ob = {
+            username: someInfo.username,
+            answer: answer.value
+        }
+
+        $.post("/compare/answers", ob)
+            .then( res => {
+                let err = document.getElementById("formsg");
+                if (res.same){
+                    err.innerText = "";
+                    err.style.display = "none"
+                    finalStep();
+                } else {
+                    err.innerText = "Answer doesnt match";
+                    err.style.display = "block"
+                }
+            })
+    })
+}
+
+function finalStep() {
+    document.getElementById("form2").style.display = "none";
+    document.getElementById("form3").style.display = "block";
+}
+
+let formThree = document.getElementById("form3");
+
+if (formThree){
+    formThree.addEventListener("submit", e => {
+        e.preventDefault()
+        let err = document.getElementById("formsg");
+
+        let password = document.getElementById("newPassword");
+        let passwordAgain = document.getElementById("newPasswordTwo")
+
+        if ( !password.value || !passwordAgain.value ){
+            err.innerText = "Please fill out both fields";
+            err.style.display = "block"
+        } else if ( password.value !== passwordAgain.value){
+            err.innerText = "Passwords do not match";
+            err.style.display = "block"
+        } else {
+            err.innerText = "";
+            err.style.display = "none"
+            checkErrs(err, password.value);
+        }
+
+    })
+}
+
+function checkErrs(err, password) {
+    let ob = {
+        username: someInfo.username,
+        password
+    }
+    $.ajax({
+        url: "/update/password",
+        method: "PUT",
+        data: ob
+    })
+        .then(res => {
+            console.log(res)
+        })
 }
