@@ -30,6 +30,12 @@ function htmlHandle(app, path) {
     app.get("/style",(req, res) => {
         res.sendFile(path.join(__dirname, "../public/css/style.css"))
     })
+    app.get("/style2",(req, res) => {
+        res.sendFile(path.join(__dirname, "../public/css/style2.css"))
+    })
+    app.get("/setup",(req, res) => {
+        res.sendFile(path.join(__dirname, "../public/css/setup.css"))
+    })
     app.get("/reset", (req, res) => {
         res.sendFile(path.join(__dirname, "../public/css/reset.css"))
     })

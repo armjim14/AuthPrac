@@ -1,16 +1,3 @@
-body {
-  background-image: url("/background");
-}
-
-.title {
-  color: white;
-  font-size: 2rem;
-}
-
-.nav-link {
-  font-size: 1.25rem;
-}
-
 .bigBox {
   width: 100%;
   margin-top: 100px;
@@ -133,7 +120,7 @@ select {
   padding: 1px 0 3px 10px;
   font-family: initial;
   letter-spacing: 1.3px;
-  background-color: black;
+  background-color: #1b1b1b;
   color: white;
   border-radius: 5rem;
   width: 90%;

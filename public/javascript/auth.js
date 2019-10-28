@@ -65,6 +65,9 @@ if (registerButton) {
                                 regmsg.innerText = "Username is taken";
                                 regmsg.style.display = "block";
                             }
+                        } else {
+                            regmsg.innerText = "Username is taken";
+                            regmsg.style.display = "block";
                         }
 
                     } else {

@@ -39,12 +39,20 @@ function session(app, db) {
     app.post("/create/account", async (req, res) => {
         const { name, email, uname, pword, securityQ, securityA } = req.body;
         try {
+
+            let userExist = await db.users.findOne({where: {uniqueUsername: uname.toLowerCase()}})
+
+            if (userExist) {
+                res.json({errors: "Username is taken"})
+            }
+
             let password = await bcrypt.hash(pword, 10)
-            console.log(password)
+
             await db.users.create({
                 name,
                 email,
                 username: uname,
+                uniqueUsername: uname.toLowerCase(),
                 password,
                 securityQ,
                 securityA: securityA.toLowerCase()

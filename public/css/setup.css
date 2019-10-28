@@ -1,0 +1,14 @@
+body {
+  background-image: url("/background");
+}
+
+.title {
+  color: white;
+  font-size: 2rem;
+}
+
+.nav-link {
+  font-size: 1.25rem;
+}
+
+/*# sourceMappingURL=setup.css.map */
