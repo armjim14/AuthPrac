@@ -147,8 +147,14 @@ select {
   display: block;
 }
 
-#form2, #form3 {
+#form2, #form3, #lastMsg {
   display: none;
+}
+
+#lastMsg {
+  color: #6fffff;
+  text-align: center;
+  font-size: 1.25rem;
 }
 
 .feedback {

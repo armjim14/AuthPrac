@@ -29,7 +29,7 @@ function session(app, db) {
             } else {
                 res.json({ message: "Invalid Credentials" })
             }
-        } catch(e) {
+        } catch (e) {
             console.log(e)
         }
 
@@ -84,24 +84,34 @@ function session(app, db) {
 
     app.post("/compare/answers", async (req, res) => {
         const { username, answer } = req.body;
-        
+
         try {
-            let userAnswer = await db.users.findOne({where: {username}});
+            let userAnswer = await db.users.findOne({ where: { username } });
             let same = userAnswer.securityA == answer;
-            res.json({same});
-        } catch(e) {
+            res.json({ same });
+        } catch (e) {
             console.log(e)
-            res.json({same: null});
+            res.json({ same: null });
         }
     })
 
     app.put("/update/password", async (req, res) => {
-        const { username, password } = req.body;
+        var { username, password, email, name } = req.body;
         try {
-
-        } catch(e) {
+            let betterPassword = await bcrypt.hash(password, 10);
+            await db.users.update(
+                {
+                    password: betterPassword
+                },
+                {
+                    where: { username }
+                }
+            )
+            sendEmail(name, email);
+            res.json({ errors: false });
+        } catch (e) {
             console.log(e)
-            res.json({errors: true});
+            res.json({ errors: true });
         }
     })
 

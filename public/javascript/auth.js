@@ -90,8 +90,6 @@ if (registerButton) {
 
 let login = document.getElementById("sendLogin");
 
-var LogMessage = "";
-
 if (login) {
 
     login.addEventListener("submit", e => {
@@ -225,6 +223,8 @@ if (formThree){
 
 function checkErrs(err, password) {
     let ob = {
+        email: someInfo.email,
+        name: someInfo.name,
         username: someInfo.username,
         password
     }
@@ -234,6 +234,22 @@ function checkErrs(err, password) {
         data: ob
     })
         .then(res => {
-            console.log(res)
+            if (res.errors) {
+                err.innerText = "Something went wrong please try again";
+                err.style.display = "block"
+            } else {
+                err.innerText = "";
+                err.style.display = "none"
+                document.getElementById("form3").style.display = "none";
+                document.getElementById("lastMsg").style.display = "block";
+
+                let count = 0;
+                setInterval( () => {
+                    count = count + 1;
+                    if (count == 3){
+                        window.location.href = "/login";
+                    }
+                }, 900 )
+            }
         })
 }
