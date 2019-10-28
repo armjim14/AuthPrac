@@ -1,6 +1,6 @@
+// Gets called in the begining to display appropiate nav links
 function correctNav() {
     $.get("/cor/nav", (res) => {
-        console.log(res.auth);
         let links = document.getElementById("links");
         if (res.auth){
             Auth(links);
@@ -10,10 +10,7 @@ function correctNav() {
     })
 }
 
-correctNav();
-
 function Auth(links) {
-
     // Profile button for navbar
     let profile = document.createElement("li");
         profile.setAttribute("class", "nav-item");
@@ -34,11 +31,9 @@ function Auth(links) {
     dashboard.append(aTag2)
 
     links.append(profile, dashboard)
-
 }
 
 function notAuth(links) {
-
     // Login button for navbar
     let login = document.createElement("li");
         login.setAttribute("class", "nav-item");
@@ -59,5 +54,14 @@ function notAuth(links) {
     register.append(aTag2);
 
     links.append(login, register);
+}
+correctNav();
 
+let callAxios = document.getElementById("callAxios");
+
+if (callAxios){
+    callAxios.addEventListener("submit", e => {
+        e.preventDefault();
+        console.log("you good")
+    })
 }

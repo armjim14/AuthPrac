@@ -1,0 +1,43 @@
+$buttonColor: darkcyan
+
+// for centering items
+.center
+    justify-content: center
+    display: flex
+    align-items: center
+
+// main search input in index file
+#search
+    margin-top: 50px
+    width: 600px
+    border-radius: 5rem
+    padding-left: 15px
+    font-weight: 600
+    font-size: 1.25rem
+
+// Getting ride of the blue outline for input fields
+input:focus, select:focus
+    outline-width: 0
+
+@media screen and (max-width: 610px)
+    #search
+        width: 90%
+
+// for button underneath the search bar
+#find
+    margin-top: 25px
+
+// general styling for all buttons ( not login, register, forgotPassword )
+.button
+    background-color: transparent
+    color: white
+    font-size: 1.25rem
+    font-weight: 600
+    border-radius: 5rem
+    padding: 0 15px 4px 15px
+    border: white 1.5px solid
+
+.button:hover
+    background: black
+    color: $buttonColor
+    border: $buttonColor 1.5px solid
