@@ -47,7 +47,7 @@ function session(app, db) {
                 username: uname,
                 password,
                 securityQ,
-                securityA
+                securityA: securityA.toLowerCase()
             })
             res.status(200).send({ created: true });
         } catch (e) {
@@ -87,7 +87,7 @@ function session(app, db) {
 
         try {
             let userAnswer = await db.users.findOne({ where: { username } });
-            let same = userAnswer.securityA == answer;
+            let same = userAnswer.securityA == answer.toLowerCase();
             res.json({ same });
         } catch (e) {
             console.log(e)
