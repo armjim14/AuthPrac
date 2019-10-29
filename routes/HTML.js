@@ -5,6 +5,9 @@ function htmlHandle(app, path) {
     app.get("/", (req, res) => {
         res.sendFile(path.join(__dirname, "../public/index.html"));
     })
+    app.get("/video/:id", (req, res) => {
+        res.sendFile(path.join(__dirname, "../public/video.html"));
+    })
     app.get("/login", (req, res) => {
         if (req.session.user){
             return res.redirect("/")
@@ -33,6 +36,9 @@ function htmlHandle(app, path) {
     app.get("/style2",(req, res) => {
         res.sendFile(path.join(__dirname, "../public/css/style2.css"))
     })
+    app.get("/video",(req, res) => {
+        res.sendFile(path.join(__dirname, "../public/css/video.css"))
+    })
     app.get("/setup",(req, res) => {
         res.sendFile(path.join(__dirname, "../public/css/setup.css"))
     })
@@ -60,6 +66,9 @@ function htmlHandle(app, path) {
     })
     app.get("/index",(req, res) => {
         res.sendFile(path.join(__dirname, "../public/javascript/index.js"))
+    })
+    app.get("/video",(req, res) => {
+        res.sendFile(path.join(__dirname, "../public/javascript/video.js"))
     })
 
     // ------------

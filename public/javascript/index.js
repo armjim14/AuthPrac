@@ -110,7 +110,7 @@ if (callAxios) {
                 let title = res.items[i].snippet.title
                 let pTag = document.createElement("p");
                     pTag.setAttribute("class", "videoTitle")
-                    // pTag.setAttribute("onclick", `alertId('${res.items[i].id.videoId}')`)
+                    pTag.setAttribute("onclick", `videoId('${res.items[i].id.videoId}')`)
                     pTag.innerText = title
 
                 innerAll.append(img, pTag)
@@ -122,6 +122,6 @@ if (callAxios) {
     })
 }
 
-function alertId(id){
-    alert(id)
+function videoId(id){
+    window.open(`/video/${id}`)
 }
