@@ -84,26 +84,19 @@ if (callAxios) {
 
             videos.innerHTML = "";
 
-            console.log(res)
-
             for (let i = 0; i < res.items.length; i++){
-
-                let center = document.createElement("div");
-                center.setAttribute("class", "center");
 
                 let hr = document.createElement("hr");
 
                 let all = document.createElement("div");
                     all.setAttribute("class", "all")
 
-                let innerALl = document.createElement("div");
-                    innerALl.setAttribute("class", "innerAll")
+                let innerAll = document.createElement("div");
+                    innerAll.setAttribute("class", "innerAll")
 
-                let picSide = document.createElement("div");
-                    picSide.setAttribute("class", "picSide");
-
-                let titleSide = document.createElement("div");
-                    titleSide.setAttribute("class", "titleSide");
+                if (i === res.items.length - 1){
+                        innerAll.setAttribute("class", "innerAll extraSpace")
+                }
 
                 // let iframe = document.createElement("iframe");
                 //     iframe.setAttribute("class", "forVideos")
@@ -117,19 +110,18 @@ if (callAxios) {
                 let title = res.items[i].snippet.title
                 let pTag = document.createElement("p");
                     pTag.setAttribute("class", "videoTitle")
+                    // pTag.setAttribute("onclick", `alertId('${res.items[i].id.videoId}')`)
                     pTag.innerText = title
 
-                // center.append(iframe)
+                innerAll.append(img, pTag)
 
-                picSide.append(img)
-                titleSide.append(pTag)
-
-                // innerALl.append(picSide, titleSide)
-                // center.append(innerALl)
-                all.append(picSide, titleSide)
-                videos.append(all, hr);
+                videos.append(innerAll);
             }
 
         })
     })
+}
+
+function alertId(id){
+    alert(id)
 }
