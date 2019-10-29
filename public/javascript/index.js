@@ -2,7 +2,7 @@
 function correctNav() {
     $.get("/cor/nav", async (res) => {
 
-        await gapi.client.setApiKey("AIzaSyCgxR__3UGXQhtk1nRX-cbtGmCl7lwCvLs");
+        await gapi.client.setApiKey("");
         await gapi.client.load('youtube', 'v3', () => {
             console.log("Loading completed")
         });
@@ -84,6 +84,8 @@ if (callAxios) {
 
             videos.innerHTML = "";
 
+            console.log(res)
+
             for (let i = 0; i < res.items.length; i++){
 
                 let center = document.createElement("div");
@@ -92,20 +94,40 @@ if (callAxios) {
                 let hr = document.createElement("hr");
 
                 let all = document.createElement("div");
+                    all.setAttribute("class", "all")
 
-                let iframe = document.createElement("iframe");
-                    iframe.setAttribute("class", "forVideos")
-                    await iframe.setAttribute("src", `https://www.youtube.com/embed/${res.items[i].id.videoId}`)
+                let innerALl = document.createElement("div");
+                    innerALl.setAttribute("class", "innerAll")
+
+                let picSide = document.createElement("div");
+                    picSide.setAttribute("class", "picSide");
+
+                let titleSide = document.createElement("div");
+                    titleSide.setAttribute("class", "titleSide");
+
+                // let iframe = document.createElement("iframe");
+                //     iframe.setAttribute("class", "forVideos")
+                //     await iframe.setAttribute("src", `https://www.youtube.com/embed/${res.items[i].id.videoId}`)
+
+                let picture = res.items[i].snippet.thumbnails.high.url;
+                let img = document.createElement("img");
+                    img.setAttribute("src", picture)
+                    img.setAttribute("class", "forImg")
     
                 let title = res.items[i].snippet.title
                 let pTag = document.createElement("p");
                     pTag.setAttribute("class", "videoTitle")
                     pTag.innerText = title
 
-                center.append(iframe)
+                // center.append(iframe)
 
-                all.append(pTag, center, hr)
-                videos.append(all);
+                picSide.append(img)
+                titleSide.append(pTag)
+
+                // innerALl.append(picSide, titleSide)
+                // center.append(innerALl)
+                all.append(picSide, titleSide)
+                videos.append(all, hr);
             }
 
         })
