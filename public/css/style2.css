@@ -42,4 +42,21 @@ input:focus, select:focus {
   border: darkcyan 1.5px solid;
 }
 
+.forVideos {
+  width: 600px;
+  height: 350px;
+}
+
+.videoTitle {
+  color: white;
+  text-align: center;
+  margin-top: 40px;
+}
+
+hr {
+  border: darkcyan 1px solid;
+  width: 80%;
+  margin-top: 40px;
+}
+
 /*# sourceMappingURL=style2.css.map */
