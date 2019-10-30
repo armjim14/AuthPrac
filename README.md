@@ -15,7 +15,7 @@
 ### http://armjimportfolio.herokuapp.com/
 
 ## Login page
-![Login Page Image](loginPage.PNG)
+![Login Page Image](loginPage.png)
 
 ## Home page with results
-![home Page Image](homePage.PNG)
+![home Page Image](homePage.png)
