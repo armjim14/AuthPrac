@@ -13,7 +13,7 @@ function correctNav() {
         } else {
             notAuth(links);
         }
-    })
+    })  
 }
 
 function Auth(links) {
