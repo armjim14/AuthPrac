@@ -10,12 +10,13 @@
 ### 1. Git clone this repo
 ### 2. npm i
 ### 3. node server.js
+### 4. Go to http://localhost:3000/
 
 ### Not currently employeed but you can see some of my other projects in my portfilio
 ### http://armjimportfolio.herokuapp.com/
 
 ## Login page
-![Login Page Image](loginPage.PNG)
+![Login Page Image](loginPage.png)
 
 ## Home page with results
-![home Page Image](homePage.PNG)
+![home Page Image](homePage.png)
