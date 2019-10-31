@@ -1,3 +1,11 @@
+.button2, .button {
+  background-color: transparent;
+  font-size: 1.25rem;
+  font-weight: 600;
+  border-radius: 5rem;
+  padding: 0 15px 4px 15px;
+}
+
 .center {
   justify-content: center;
   display: flex;
@@ -27,12 +35,7 @@ input:focus, select:focus, .button:focus {
 }
 
 .button {
-  background-color: transparent;
   color: white;
-  font-size: 1.25rem;
-  font-weight: 600;
-  border-radius: 5rem;
-  padding: 0 15px 4px 15px;
   border: white 1.5px solid;
 }
 
@@ -40,6 +43,17 @@ input:focus, select:focus, .button:focus {
   background: black;
   color: darkcyan;
   border: darkcyan 1.5px solid;
+}
+
+.button2 {
+  color: darkcyan;
+  border: darkcyan 1.5px solid;
+}
+
+.button2:hover {
+  background: black;
+  color: white;
+  border: white 1.5px solid;
 }
 
 #videos {

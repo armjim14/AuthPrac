@@ -22,4 +22,42 @@ h2 {
   text-align: center;
 }
 
+a {
+  color: darkcyan;
+}
+
+form {
+  width: 100%;
+}
+
+#comments {
+  margin-top: 40px;
+}
+
+.forInput {
+  display: flex;
+  width: 90%;
+  margin-left: 5%;
+  margin-bottom: 18px;
+  padding-left: 8px;
+  font-size: 1.25rem;
+  border: none;
+  color: white;
+  border-bottom: white 1px solid;
+  background-color: transparent;
+}
+
+.forInput:focus {
+  outline-width: 0;
+}
+
+.outerInputBox {
+  width: 100%;
+}
+
+.innerInputBox {
+  margin: auto;
+  width: 600px;
+}
+
 /*# sourceMappingURL=video.css.map */

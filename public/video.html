@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/boot1">
     <link rel="stylesheet" href="/boot2">
     <link rel="stylesheet" href="/setup">
+    <link rel="stylesheet" href="/style2">
     <link rel="stylesheet" href="/video">
 </head>
 
@@ -38,10 +39,50 @@
     <div id="videoHolder">
     </div>
 
-    <div id="notAuth">
-        <h2>An account has to be made to make comments and take notes.</h2>
+    <!-- <div id="notAuth">
+        <h2><a href="/register">Create an account</a> to make comments and take notes.</h2>
         <hr>
-        <h2>Comments</h2>
+    </div> -->
+
+    <div id="auth" class="row">
+        <div class="col-md-6 d-flex justify-content-center">
+            <button class="button" id="addComment">Add a comment</button>
+        </div>
+        <div class="col-md-6 d-flex justify-content-center">
+            <button class="button" id="addNote">Take notes</button>
+        </div>
+        <hr>
+
+        <!-- <div id="commentInput" class="outerInputBox mt-5">
+            <div class="innerInputBox">
+                <div class="center">
+                    <form id="sendComment">
+                        <input id="commentValue" class="forInput" type="text" placeholder="Add a comment">
+                        <div class="center">
+                            <button class="button2" type="submit">Add comment</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div> -->
+
+        <div id="noteInput" class="outerInputBox mt-5">
+            <div class="innerInputBox">
+                <div class="center">
+                    <form id="sendNote">
+                        <input id="noteValue" class="forInput" type="text" placeholder="Add a note">
+                        <div class="center">
+                            <button class="button2" type="submit">Add note</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="comments">
+        <h2 style="text-decoration: underline;">Comments</h2>
     </div>
 
     <script src="/jQuery"></script>
@@ -50,4 +91,5 @@
     <script src="/index"></script>
     <script src="/videoScript"></script>
 </body>
+
 </html>
