@@ -67,7 +67,7 @@ function htmlHandle(app, path) {
     app.get("/index",(req, res) => {
         res.sendFile(path.join(__dirname, "../public/javascript/index.js"))
     })
-    app.get("/video",(req, res) => {
+    app.get("/videoScript",(req, res) => {
         res.sendFile(path.join(__dirname, "../public/javascript/video.js"))
     })
 

@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/video">
 </head>
 
-<body>
+<body onload="correctNav()">
     <!-- -------- -->
     <!-- for navbar -->
     <!-- -------- -->
@@ -35,9 +35,19 @@
     <!-- -------- -->
     <!-- ending navbar -->
     <!-- -------- -->
-    <h1>number</h1>
+    <div id="videoHolder">
+    </div>
+
+    <div id="notAuth">
+        <h2>An account has to be made to make comments and take notes.</h2>
+        <hr>
+        <h2>Comments</h2>
+    </div>
+
     <script src="/jQuery"></script>
     <script src="/forNav"></script>
-    <script src="/video"></script>
+    <script src="https://apis.google.com/js/client.js"></script>
+    <script src="/index"></script>
+    <script src="/videoScript"></script>
 </body>
 </html>

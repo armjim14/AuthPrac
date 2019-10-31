@@ -4,19 +4,23 @@ function correctNav() {
 
         await gapi.client.setApiKey("");
         await gapi.client.load('youtube', 'v3', () => {
-            console.log("Loading completed")
+
+            let links = document.getElementById("links");
+
+            let inVideo = window.location.pathname.split("/")[1] == "video"
+
+            if (res.auth) {
+                Auth(links, inVideo);
+            } else {
+                notAuth(links, inVideo);
+            }
+
         });
 
-        let links = document.getElementById("links");
-        if (res.auth) {
-            Auth(links);
-        } else {
-            notAuth(links);
-        }
     })  
 }
 
-function Auth(links) {
+function Auth(links, inVideo) {
     // Profile button for navbar
     let profile = document.createElement("li");
     profile.setAttribute("class", "nav-item");
@@ -37,9 +41,13 @@ function Auth(links) {
     dashboard.append(aTag2)
 
     links.append(profile, dashboard)
+
+    if (inVideo){
+        playVideo();
+    }
 }
 
-function notAuth(links) {
+function notAuth(links, inVideo) {
     // Login button for navbar
     let login = document.createElement("li");
     login.setAttribute("class", "nav-item");
@@ -60,6 +68,24 @@ function notAuth(links) {
     register.append(aTag2);
 
     links.append(login, register);
+
+    if (inVideo){
+        playVideo();
+    }
+}
+
+async function playVideo() {
+
+    let id = window.location.pathname.split("/")[2];
+
+    let videoHolder = document.getElementById("videoHolder");
+    
+    let iframe = document.createElement("iframe");
+        iframe.setAttribute("class", "singleVideo")
+        await iframe.setAttribute("src", `https://www.youtube.com/embed/${id}`)
+
+    videoHolder.append(iframe)
+    
 }
 
 let callAxios = document.getElementById("callAxios");
@@ -98,10 +124,6 @@ if (callAxios) {
                         innerAll.setAttribute("class", "innerAll extraSpace")
                 }
 
-                // let iframe = document.createElement("iframe");
-                //     iframe.setAttribute("class", "forVideos")
-                //     await iframe.setAttribute("src", `https://www.youtube.com/embed/${res.items[i].id.videoId}`)
-
                 let picture = res.items[i].snippet.thumbnails.high.url;
                 let img = document.createElement("img");
                     img.setAttribute("src", picture)
@@ -123,5 +145,5 @@ if (callAxios) {
 }
 
 function videoId(id){
-    window.open(`/video/${id}`)
+    window.location.href = `/video/${id}`;
 }

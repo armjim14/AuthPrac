@@ -1,0 +1,25 @@
+#videoHolder {
+  justify-content: center;
+  display: flex;
+  margin-bottom: 50px;
+}
+
+.singleVideo {
+  margin-top: 50px;
+  width: 600px;
+  height: 340px;
+}
+
+hr {
+  border: darkcyan 1px solid;
+  width: 80%;
+  margin-top: 40px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: white;
+  text-align: center;
+}
+
+/*# sourceMappingURL=video.css.map */
