@@ -43,6 +43,8 @@ function Auth(links, inVideo) {
     links.append(profile, dashboard)
 
     if (inVideo){
+        let authSide = document.getElementById("auth");
+        authSide.style.display = "flex"
         playVideo();
     }
 }
@@ -70,6 +72,8 @@ function notAuth(links, inVideo) {
     links.append(login, register);
 
     if (inVideo){
+        let notAuthSide = document.getElementById("notAuth");
+        notAuthSide.style.display = "block"
         playVideo();
     }
 }
