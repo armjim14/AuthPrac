@@ -24,3 +24,80 @@ showNotes.onclick = () => {
 }
 
 // For submiting a comment
+let sendComment = document.getElementById("sendComment");
+sendComment.addEventListener("submit", e => {
+
+    e.preventDefault();
+    let comment = document.getElementById("commentValue");
+
+    if (!comment.value){
+
+        let count = 0;
+        let interval = setInterval(() => {
+            count++
+            videoFeedback.innerText = "You comment can't be blank"
+            videoFeedback.style.color = "lightcoral"
+            videoFeedback.style.display = "block"
+            if (count == 3){
+                clearInterval(interval)
+                videoFeedback.style.display = "none"
+                videoFeedback.innerText = ""
+                videoFeedback.style.color = "white"
+            }
+        }, 900)
+
+    } else {
+        let ob = {
+            id: user.id,
+            videoId: window.location.pathname.split("/")[2],
+            comment: comment.value
+        }
+
+        $.post("/add/comment", ob)
+            .then(res => {
+                console.log(res)
+            })
+        
+
+        comment.value = "";
+    }
+})
+
+// For submiting a note
+let sendNote = document.getElementById("sendNote");
+sendNote.addEventListener("submit", e => {
+    e.preventDefault();
+    let note = document.getElementById("noteValue");
+
+    if (!note.value){
+
+        let count = 0;
+        let interval = setInterval(() => {
+            count++
+            videoFeedback.innerText = "You note can't be blank"
+            videoFeedback.style.color = "lightcoral"
+            videoFeedback.style.display = "block"
+            if (count == 3){
+                clearInterval(interval)
+                videoFeedback.style.display = "none"
+                videoFeedback.innerText = ""
+                videoFeedback.style.color = "white"
+            }
+        }, 900)
+
+    } else {
+        let ob = {
+            id: user.id,
+            videoId: window.location.pathname.split("/")[2],
+            note: note.value
+        }
+
+        $.post("/add/note", ob)
+            .then(res => {
+                console.log(res)
+            })
+        
+
+        note.value = "";
+    }
+})

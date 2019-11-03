@@ -1,3 +1,5 @@
+var user;
+
 // Gets called in the begining to display appropiate nav links
 function correctNav() {
     $.get("/cor/nav", async (res) => {
@@ -10,6 +12,7 @@ function correctNav() {
             let inVideo = window.location.pathname.split("/")[1] == "video"
 
             if (res.auth) {
+                user = res.user;
                 Auth(links, inVideo);
             } else {
                 notAuth(links, inVideo);
@@ -115,8 +118,6 @@ if (callAxios) {
             videos.innerHTML = "";
 
             for (let i = 0; i < res.items.length; i++){
-
-                let hr = document.createElement("hr");
 
                 let all = document.createElement("div");
                     all.setAttribute("class", "all")

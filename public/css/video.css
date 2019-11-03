@@ -51,7 +51,7 @@ form {
   background-color: transparent;
 }
 
-.forInput:focus {
+.forInput:focus, .button2:focus {
   outline-width: 0;
 }
 

@@ -16,6 +16,7 @@ function session(app, db) {
 
                 if (match) {
                     req.session.user = {
+                        id: user.id,
                         name: user.name,
                         email: user.email,
                         username
