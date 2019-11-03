@@ -41,6 +41,25 @@ function APIS(app, db){
             res.json({added: false})
         }
     })
+
+    app.get("/all/comments/:videoId", async (req, res) => {
+
+        let videoId = req.params.videoId;
+        
+        try {
+            let comments = await db.comments.findAll({
+                where: {
+                    videoId
+                }
+            })
+            res.json(comments)
+        } catch(e) {
+            console.log(e);
+            res.json({error: true})
+        }
+
+    })
+
 }
 
 module.exports = APIS;
