@@ -12,6 +12,8 @@ let noteSection = document.getElementById("noteInput");
 // Providing feedback underneath the hr in the auth side
 let videoFeedback = document.getElementById("videoFeedback");
 
+localStorage.setItem("memory", JSON.stringify(vId))
+
 // The logic from switching back and forth comment to notes
 showComments.onclick = () => {
     commentSection.style.display = "block";
@@ -165,7 +167,6 @@ sendNote.addEventListener("submit", e => {
 // function to load comments for current video
 function loadComments(id){
     $.get(`/all/comments/${id}`, res => {
-        console.log(res)
         let commentArea = document.getElementById("comments");
             commentArea.innerHTML = "<h2><u>Comments</u></h2>"
         for (let i = 0; i < res.length; i++){

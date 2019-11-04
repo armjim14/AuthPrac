@@ -1,5 +1,6 @@
 function APIS(app, db){
 
+    // Checking if user is authenticated
     app.get("/cor/nav", async (req, res) => {
 
         if (req.session.user){
@@ -10,6 +11,7 @@ function APIS(app, db){
 
     })
 
+    // Adding a comment
     app.post("/add/comment", async (req, res) => {
         let { id, videoId, comment } = req.body
 
@@ -26,6 +28,7 @@ function APIS(app, db){
         }
     })
 
+    // Adding a note
     app.post("/add/note", async (req, res) => {
         let { id, videoId, note } = req.body
 
@@ -42,6 +45,7 @@ function APIS(app, db){
         }
     })
 
+    // Getting all comments for a video
     app.get("/all/comments/:videoId", async (req, res) => {
 
         let videoId = req.params.videoId;

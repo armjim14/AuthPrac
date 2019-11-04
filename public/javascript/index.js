@@ -1,5 +1,7 @@
 var user;
 
+localStorage.setItem("memory", JSON.stringify(""))
+
 // Gets called in the begining to display appropiate nav links
 function correctNav() {
     $.get("/cor/nav", async (res) => {

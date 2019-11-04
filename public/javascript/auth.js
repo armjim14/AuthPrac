@@ -114,13 +114,19 @@ if (login) {
                 password: password.value
             }
 
+            let memory = JSON.parse(localStorage.getItem("memory"));
+
             $.post("/find/user", ob)
                 .then(res => {
                     if (res.message) {
                         err.innerText = res.message;
                         err.style.display = "block";
                     } else {
-                        window.location.href = "/";
+                        if (memory !== ""){
+                            window.location.href = "/video/" + memory;
+                        } else {
+                            window.location.href = "/";
+                        }
                     }
                 })
 
