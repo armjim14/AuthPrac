@@ -6,7 +6,7 @@ localStorage.setItem("memory", JSON.stringify(""))
 function correctNav() {
     $.get("/cor/nav", async (res) => {
 
-        await gapi.client.setApiKey("");
+        await gapi.client.setApiKey("AIzaSyCgxR__3UGXQhtk1nRX-cbtGmCl7lwCvLs");
         await gapi.client.load('youtube', 'v3', () => {
 
             let links = document.getElementById("links");
@@ -126,6 +126,7 @@ if (callAxios) {
 
                 let innerAll = document.createElement("div");
                     innerAll.setAttribute("class", "innerAll")
+                    innerAll.setAttribute("onclick", `videoId('${res.items[i].id.videoId}')`)
 
                 if (i === res.items.length - 1){
                         innerAll.setAttribute("class", "innerAll extraSpace")
@@ -139,7 +140,6 @@ if (callAxios) {
                 let title = res.items[i].snippet.title
                 let pTag = document.createElement("p");
                     pTag.setAttribute("class", "videoTitle")
-                    pTag.setAttribute("onclick", `videoId('${res.items[i].id.videoId}')`)
                     pTag.innerText = title
 
                 innerAll.append(img, pTag)

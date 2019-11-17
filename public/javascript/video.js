@@ -170,11 +170,23 @@ function loadComments(id){
         let commentArea = document.getElementById("comments");
             commentArea.innerHTML = "<h2><u>Comments</u></h2>"
         for (let i = 0; i < res.length; i++){
-            let p = document.createElement("li");
-                p.setAttribute("class", "allComments")
-                p.innerText = res[i].comment;
+            
+            let firstPart = res[i].comment.split(":");
+            let usernameBack = firstPart[0];
+            let restBack = firstPart.slice(1).join("");
+            
+            let span = document.createElement("span");
+                span.innerHTML = usernameBack;
+                span.createTextNode
+                span.setAttribute("class", "forUser")
 
-            commentArea.append(p);
+            let info = `<li class='allComments'><span>${usernameBack}</span>: ${restBack}</li>`;
+            
+            // let p = document.createElement("li");
+            //     p.setAttribute("class", "allComments")
+            //     p.innerHTML = span + ': ' + restBack;
+            console.log(info)
+            commentArea.append(info);
         }
     })
 }
