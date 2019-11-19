@@ -170,7 +170,7 @@ function loadComments(id){
         let commentArea = document.getElementById("comments");
             commentArea.innerHTML = "<h2><u>Comments</u></h2>"
         for (let i = 0; i < res.length; i++){
-            
+            console.log(res)
             let firstPart = res[i].comment.split(":");
             let usernameBack = firstPart[0];
             let restBack = firstPart.slice(1).join("");
@@ -179,16 +179,18 @@ function loadComments(id){
                 span.innerHTML = usernameBack;
                 span.createTextNode
                 span.setAttribute("class", "forUser")
-
-            let info = `<li class='allComments'><span>${usernameBack}</span>: ${restBack}</li>`;
             
-            // let p = document.createElement("li");
-            //     p.setAttribute("class", "allComments")
-            //     p.innerHTML = span + ': ' + restBack;
-            console.log(info)
-            commentArea.append(info);
+            let p = document.createElement("li");
+                p.setAttribute("class", "allComments")
+                p.innerHTML = `<span class='forUser' onclick="oneUser(${res[i].userId})">${usernameBack}: </span> ${restBack}`
+
+            commentArea.append(p);
         }
     })
 }
 
 loadComments(vId);
+
+function oneUser(name){
+    alert(name);
+}

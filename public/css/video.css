@@ -99,4 +99,13 @@ form {
   font-size: 1.15rem;
 }
 
+.forUser {
+  color: #00e0e0;
+}
+
+.forUser:hover {
+  cursor: pointer;
+  color: darkcyan;
+}
+
 /*# sourceMappingURL=video.css.map */
