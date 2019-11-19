@@ -170,7 +170,7 @@ function loadComments(id){
         let commentArea = document.getElementById("comments");
             commentArea.innerHTML = "<h2><u>Comments</u></h2>"
         for (let i = 0; i < res.length; i++){
-            console.log(res)
+
             let firstPart = res[i].comment.split(":");
             let usernameBack = firstPart[0];
             let restBack = firstPart.slice(1).join("");
@@ -191,6 +191,6 @@ function loadComments(id){
 
 loadComments(vId);
 
-function oneUser(name){
-    alert(name);
+function oneUser(id){
+    console.log(id)
 }
