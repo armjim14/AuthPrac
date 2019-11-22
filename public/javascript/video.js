@@ -193,5 +193,5 @@ loadComments(vId);
 
 function oneUser(id){
     console.log(id)
-    //window.location.href = `/user/${id}`
+    window.location.href = `/user/${id}`
 }

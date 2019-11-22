@@ -26,6 +26,9 @@ function htmlHandle(app, path) {
         }
         res.sendFile(path.join(__dirname, "../public/forgotPassword.html"));
     })
+    app.get("/user/:id", (req, res) => {
+        res.sendFile(path.join(__dirname, "../public/profile.html"))
+    })
 
     // ------------
     // CSS
@@ -69,6 +72,9 @@ function htmlHandle(app, path) {
     })
     app.get("/videoScript",(req, res) => {
         res.sendFile(path.join(__dirname, "../public/javascript/video.js"))
+    })
+    app.get("/profile",(req, res) => {
+        res.sendFile(path.join(__dirname, "../public/javascript/Profile.js"))
     })
 
     // ------------
