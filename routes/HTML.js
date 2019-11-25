@@ -54,6 +54,9 @@ function htmlHandle(app, path) {
     app.get("/boot2", (req, res) => {
         res.sendFile(path.join(__dirname, "../public/css/bootstrap.min.css"))
     })
+    app.get("/prof", (req, res) => {
+        res.sendFile(path.join(__dirname, "../public/css/prof.css"))
+    })
 
     // ------------
     // JavaScript
