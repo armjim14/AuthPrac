@@ -83,6 +83,9 @@ function htmlHandle(app, path) {
     app.get("/background", (req, res) => {
         res.sendFile(path.join(__dirname, "../public/images/background.jpg"))
     })
+    app.get("/unknown", (req, res) => {
+        res.sendFile(path.join(__dirname, "../public/images/unknown.png"))
+    })
 }
 
 module.exports = htmlHandle;

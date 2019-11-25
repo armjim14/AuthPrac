@@ -6,7 +6,7 @@ localStorage.setItem("memory", JSON.stringify(""))
 function correctNav() {
     $.get("/cor/nav", async (res) => {
 
-        await gapi.client.setApiKey("AIzaSyCgxR__3UGXQhtk1nRX-cbtGmCl7lwCvLs");
+        await gapi.client.setApiKey("");
         await gapi.client.load('youtube', 'v3', () => {
 
             let links = document.getElementById("links");
@@ -26,26 +26,17 @@ function correctNav() {
 }
 
 function Auth(links, inVideo) {
+
     // Profile button for navbar
     let profile = document.createElement("li");
     profile.setAttribute("class", "nav-item");
     let aTag = document.createElement("a");
     aTag.innerText = "Profile";
     aTag.setAttribute("class", "nav-link");
-    aTag.setAttribute("href", "/profile");
-
-    // dashboard button for navbar
-    let dashboard = document.createElement("li");
-    dashboard.setAttribute("class", "nav-item");
-    let aTag2 = document.createElement("a");
-    aTag2.innerText = "Dashboard";
-    aTag2.setAttribute("class", "nav-link");
-    aTag2.setAttribute("href", "/dashboard");
+    aTag.setAttribute("href", `/user/${user.id}`);
 
     profile.append(aTag)
-    dashboard.append(aTag2)
-
-    links.append(profile, dashboard)
+    links.append(profile)
 
     if (inVideo){
         let authSide = document.getElementById("auth");
