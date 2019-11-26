@@ -6,7 +6,7 @@ localStorage.setItem("memory", JSON.stringify(""))
 function correctNav() {
     $.get("/cor/nav", async (res) => {
 
-        await gapi.client.setApiKey("");
+        await gapi.client.setApiKey("AIzaSyCgxR__3UGXQhtk1nRX-cbtGmCl7lwCvLs");
         await gapi.client.load('youtube', 'v3', () => {
 
             let links = document.getElementById("links");
