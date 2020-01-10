@@ -32,6 +32,10 @@
   background-color: white;
 }
 
+#image {
+  border: black 1.5px solid;
+}
+
 #image:hover {
   border: darkcyan 1.5px solid;
   cursor: pointer;
